@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Receptionist demo</title>
+<style>body{font-family:system-ui,Arial,sans-serif;margin:0;color:#1a2433;text-align:center}header{background:#0f2a44;color:#fff;padding:48px 20px}.w{max-width:700px;margin:auto;padding:24px 20px;line-height:1.55}a{color:#f28c28}</style></head><body>
+<header><h1 id="t">AI receptionist demo</h1><p id="s">Hear how every call to your company could be answered, 24/7.</p></header>
+<div class="w"><p>Tap <b>Talk to the receptionist live</b> (bottom right), tap the call button, allow the microphone, and pretend your AC just quit. Typing in the box starts a text chat instead.</p>
+<p>This is a demo built by Always Answered. It is not connected to your real phone line. <a href="../">See pricing</a> · <a href="mailto:Diamondproperties501@gmail.com?subject=Always%20Answered%20walkthrough">Book a walkthrough</a></p></div>
+<script>
+const slug=new URLSearchParams(location.search).get('b')||'';
+fetch('profiles.json').then(r=>r.json()).then(all=>{const p=all[slug];
+ const w=document.createElement('elevenlabs-convai');w.setAttribute('agent-id','agent_9501m5f663t3f12bsdq5whjw7cb5');w.setAttribute('action-text','Talk to the receptionist live');
+ if(p){document.getElementById('t').textContent=p.name+': AI receptionist demo';w.setAttribute('override-prompt',p.prompt);w.setAttribute('override-first-message',p.first_message);document.title=p.name+' receptionist demo';}
+ else{document.getElementById('s').textContent='Unknown company link. Try the main page.';return;}
+ document.body.appendChild(w);const s=document.createElement('script');s.src='https://unpkg.com/@elevenlabs/convai-widget-embed';s.async=true;document.body.appendChild(s);});
+</script></body></html>
